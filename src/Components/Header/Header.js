@@ -1,7 +1,8 @@
+import './style.css';
 
 const Header = () => (
-    `<header>
-        hello webpack
+    `<header class = 'hello'>
+        Hello webpack
     <header/>`
 );
 
