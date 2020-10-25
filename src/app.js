@@ -1,5 +1,5 @@
 //style:
-import './style.css';
+import './main.sass';
 
 //DOM refs:
 const Heading = document.getElementsByClassName('heading')[0];
