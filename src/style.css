@@ -1,8 +1,17 @@
-.header{
-    width: 300px;
-    height: 300px;
+.headerBody {
+    width: 100%;
+    height: 25px;
 
-    margin: auto;
+    margin: 50px auto 25px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading{
+    width: auto;
+    height: 25px;
 
     display: flex;
     align-items: center;
@@ -11,4 +20,23 @@
 
     font-family: Arial;
     font-size: 25px;
+}
+
+.jsIcon, .webpackIcon {
+    width: 25px;
+    height: 25px;
+
+    margin: 0 0 0 25px;
+}
+
+.mainText {
+    font-family: Arial;
+
+    margin: 0 25px;
+}
+
+.mainText::first-letter{
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
 }

@@ -2,6 +2,6 @@
 import './style.css';
 
 //DOM refs:
-const Header = document.getElementsByClassName('header')[0];
+const Heading = document.getElementsByClassName('heading')[0];
 
-Header.appendChild('Hello webpack');
+Heading.textContent = 'Hello webpack';

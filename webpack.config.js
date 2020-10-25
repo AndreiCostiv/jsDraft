@@ -12,7 +12,8 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         port: '3000',
-        compress: true
+        compress: true,
+        hot: true
     },
     plugins: [
         new CleanWebpackPlugin(),
