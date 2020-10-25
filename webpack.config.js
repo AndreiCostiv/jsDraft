@@ -14,8 +14,20 @@ module.exports = {
         port: '3000',
         compress: true
     },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
+    ],
     module: {
         rules: [
+            {
+                test: /\.html$/,
+                use: [
+                    'html-loader'
+                ]
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -25,9 +37,13 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'icons'
+                    }
+                }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -37,12 +53,6 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            title: 'draft'
-        }),
-    ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),

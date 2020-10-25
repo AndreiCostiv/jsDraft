@@ -1,4 +1,4 @@
-.hello{
+.header{
     width: 300px;
     height: 300px;
 
@@ -11,5 +11,4 @@
 
     font-family: Arial;
     font-size: 25px;
-
 }

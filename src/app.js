@@ -1,6 +1,7 @@
-import Header from './Components/Header/Header';
+//style:
+import './style.css';
 
 //DOM refs:
-const body = document.getElementsByTagName('body')[0];
+const Header = document.getElementsByClassName('header')[0];
 
-body.innerHTML = Header();
+Header.appendChild('Hello webpack');
