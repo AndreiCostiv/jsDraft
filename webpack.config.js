@@ -30,11 +30,17 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
+                test: /\.m?js$/,
+                exclude: [
+                    /node_modules[\\\/]core-js/,
+                    /node_modules[\\\/]webpack[\\\/]buildin/,
+                  ],
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                } 
             },
             {
                 test: /\.sass$/,
