@@ -1,13 +1,8 @@
-//packages & plugins:
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = {
+module.exports = merge(common, {
     mode: 'development',
-    entry: {
-        App: './src/App.js'
-    },
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
@@ -15,12 +10,6 @@ module.exports = {
         compress: true,
         hot: true
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        }),
-    ],
     module: {
         rules: [
             {
@@ -68,9 +57,7 @@ module.exports = {
             }
         ]
     },
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+    devServer: {
+        contentBase: './dist',
     },
-};
+ });
