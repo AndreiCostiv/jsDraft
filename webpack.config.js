@@ -1,7 +1,18 @@
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+//packages & plugins:
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = {
+    entry: {
+        App: './src/App.js'
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
+    ],
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
@@ -34,6 +45,7 @@ module.exports = merge(common, {
             {
                 test: /\.sass$/,
                 use: [
+                    'cache-loader',
                     'style-loader',
                     'css-loader',
                     'sass-loader'
@@ -45,19 +57,25 @@ module.exports = merge(common, {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'icons'
+                        outputPath: 'assets'
                     }
                 }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]  
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts'
+                    }
+                }  
             }
         ]
     },
-    devServer: {
-        contentBase: './dist',
+    output: {
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
- });
+}
